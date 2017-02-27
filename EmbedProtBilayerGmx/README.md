@@ -269,7 +269,8 @@ to unwrap the membrane. The `echo 0 |` part of the command automatically selecte
 * Next, use an in-house script to place the protein next to the membrane
 
 ```
-python $SCRIPTS/Membrane/place_protein.py -p 4nef_gmx.gro -m membrane_em_whole.gro -o initial.gro```
+python $SCRIPTS/Membrane/place_protein.py -p 4nef_gmx.gro -m membrane_em_whole.gro -o initial.gro
+```
 
 this places the protein as close as possible to the membrane along the x-dimension. It also puts a new simulation box around the system.
 
