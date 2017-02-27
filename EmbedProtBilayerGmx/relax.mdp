@@ -1,0 +1,48 @@
+define                   = -DPOSRES
+integrator               = md
+tinit                    = 0
+dt                       = 0.002
+nsteps                   = 5000000
+pbc			 			 = xyz
+comm-mode                = linear
+nstcomm                  = 1
+comm-grps                = System
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 2500
+nstvout                  = 0
+nstfout                  = 0
+nstlist			 		 = 10
+ns_type					 = grid
+nstenergy				 = 2500
+energygrps				 = SOL POPC Protein
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = Verlet
+coulombtype              = pme
+rcoulomb                 = 1.2
+rlist                    = 1.2
+rvdw                     = 1.2
+vdwtype                  = cutoff
+vdw-modifier             = force-switch
+rvdw-switch              = 1.0
+DispCorr                 = EnerPres
+table-extension          = 1
+fourierspacing           = 0.12
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+tcoupl                   = berendsen
+tc-grps                  = SOL POPC Protein
+tau-t                    = 0.5 0.5 0.5
+ref-t                    = 303 303 303
+Pcoupl                   = berendsen
+Pcoupltype               = semiisotropic
+ref-p                    = 1.013 1.013
+tau-p                    = 10.0 10.0
+compressibility          = 4.5e-5 4.5e-5
+refcoord_scaling         = no
+
+; CONSTRAINTS
+constraints              = all-bonds
+constraint-algorithm     = Lincs
