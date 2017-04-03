@@ -341,7 +341,7 @@ Now we can proceed with a short minimization:
 
 and
 
-* `$GMX/gmx mdrun -deffnm em`
+* `gmx mdrun -deffnm em`
 
 And then we can setup the "push"-simulation, with the high later pressure. For this we are using the `push.mdp` file provided.
 
