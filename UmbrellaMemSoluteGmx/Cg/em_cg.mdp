@@ -1,0 +1,31 @@
+define                   = -DPPP
+integrator               = steep
+tinit                    = 0
+dt                       = 0.02
+nsteps                   = 10000
+pbc			             = xyz
+comm-mode                = linear
+nstcomm                  = 1
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 1000
+nstvout                  = 0
+nstfout                  = 0
+nstenergy		 = 100
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = Verlet
+verlet-buffer-tolerance  = 0.005
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 2.5
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+nstlist			         = 20
+ns_type			         = grid
+
+; CONSTRAINTS
+constraints              = none
+constraint-algorithm     = Lincs

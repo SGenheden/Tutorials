@@ -1,0 +1,42 @@
+integrator               = md
+tinit                    = 0
+dt                       = 0.02
+nsteps                   = 2500000
+pbc			 			 = xyz
+comm-mode                = linear
+nstcomm                  = 1
+comm-grps                = System
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 5000
+nstvout                  = 0
+nstfout                  = 0
+nstenergy				 = 100
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = Verlet
+verlet-buffer-tolerance  = 0.005
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 2.5
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+nstlist			         = 20
+ns_type			         = grid
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+tcoupl                   = v-rescale
+tc-grps                  = W POPE Solute
+tau-t                    = 0.5 0.5 0.5
+ref-t                    = 303 303 303
+Pcoupl                   = berendsen
+Pcoupltype               = semiisotropic
+ref-p                    = 1.013 1.013
+tau-p                    = 10.0 10.0
+compressibility          = 4.5e-5 4.5e-5
+
+; CONSTRAINTS
+constraints              = none
+constraint-algorithm     = Lincs
