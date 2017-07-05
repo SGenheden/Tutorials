@@ -1,0 +1,8 @@
+1-octanol2.itp
+ffnonbonded.itp
+temp.mdp
+mdout.mdp
+toluene_boxed.gro
+toluene_gmx.itp
+toluene_oct*
+toluene_wat*

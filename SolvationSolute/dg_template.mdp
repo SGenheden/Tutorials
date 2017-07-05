@@ -1,0 +1,58 @@
+integrator               = md
+tinit                    = 0
+dt                       = 0.002
+nsteps                   = 3000000
+pbc	                     = xyz
+comm-mode                = linear
+nstcomm                  = 1
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 0
+nstvout                  = 0
+nstfout                  = 0
+nstenergy	             = 100
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = group
+coulombtype              = pme
+rcoulomb                 = 1.0
+rlist                    = 1.0
+rvdw                     = 1.0
+vdwtype                  = cutoff
+DispCorr                 = EnerPres
+table-extension          = 1
+fourierspacing           = 0.12
+nstlist		             = 10
+ns_type		             = grid
+
+; CONSTRAINTS
+constraints              = H-bonds
+constraint-algorithm     = Lincs
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+tcoupl                   = v-rescale 
+tc-grps                  = system
+tau-t                    = 1.0
+ref-t                    = 298
+Pcoupl                   = berendsen
+Pcoupltype               = isotropic
+ref-p                    = 1.013
+tau-p                    = 5.0
+compressibility          = 4.5e-5
+
+; OPTIONS FOR FREE ENERGY
+free-energy              = yes
+init-lambda-state        = XXX
+calc_lambda_neighbors    = 1
+fep-lambdas              = 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0 0.00 0.0
+coul-lambdas             = 0.0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1.0
+vdw-lambdas              = 0.0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1.0
+sc-alpha                 = 0.5
+sc-coul                  = yes
+sc-power                 = 1
+couple-moltype           = MMM 
+couple-lambda0           = vdw-q
+couple-lambda1           = none
+couple-intramol          = no
+nstdhdl                  = 2500

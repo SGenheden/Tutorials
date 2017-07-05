@@ -1,0 +1,32 @@
+define                   = -DPOSRES
+integrator               = steep
+tinit                    = 0
+dt                       = 0.002
+nsteps                   = 1000
+pbc			             = xyz
+comm-mode                = linear
+nstcomm                  = 1
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 1000
+nstvout                  = 0
+nstfout                  = 0
+nstenergy		         = 100
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = Verlet
+coulombtype              = pme
+rcoulomb                 = 1.0
+rlist                    = 1.0
+rvdw                     = 1.0
+vdwtype                  = cutoff
+DispCorr                 = EnerPres
+table-extension          = 1
+fourierspacing           = 0.12
+nstlist			         = 10
+ns_type			         = grid
+
+; CONSTRAINTS
+constraints              = none
+constraint-algorithm     = Lincs
