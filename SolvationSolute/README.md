@@ -39,7 +39,7 @@ but we will however make it into an .itp-file so that we can use it with both so
 
     python $SCRIPTS/Gromacs/top2itp.py toluene_gmx.top
 
-this scripts also prints out the atom type definitions. Copy them into a new file called `ffnonboned.ff` and make sure it looks like this
+this scripts also prints out the atom type definitions. Copy them into a new file called `ffnonbonded.itp` and make sure it looks like this
 
     [ defaults ]    
     1               2               yes             0.5     0.833333
@@ -59,7 +59,7 @@ which is the atom types for the TIP3P water model.
 
 The topology file for octanol can be downloaded from [virtualchemistry.org](http://virtualchemistry.org/), it is also provided in this tutorial (`1-octanol.itp`).
 
-Move the atom type definitions from this file to `ffnonbonded.ff`
+Move the atom type definitions from this file to `ffnonbonded.itp`
 
     h1            h1      0.0000  0.0000  A   2.47135e-01  6.56888e-02
     hc            hc      0.0000  0.0000  A   2.64953e-01  6.56888e-02
@@ -71,7 +71,7 @@ The atom types *c3* and *hc* are already provided so you don't need to copy them
 
 Remove the `[ defaults ]` and `[ atomtypes ]` directives and the lines that follow them. In principle the `1-octanol.itp` file should start with the `[ moleculetype ]` directive, but the comments in the beginning you can keep.
 
-Now we can create the system topology file. For water it should look something like this and you can call it `toluene-wat.top`
+Now we can create the system topology file. For water it should look something like this and you can call it `toluene_wat.top`
 
     #include "ffnonbonded.itp"
     #include "toluene_gmx.itp"
@@ -86,7 +86,7 @@ Now we can create the system topology file. For water it should look something l
 
 If more or less than 2160 water molecules were added, change that number. The TIP3P topology is loaded from the Gromacs installation.
 
-For octanol it should look something like this and you can call it `toluene-oct.top`
+For octanol it should look something like this and you can call it `toluene_oct.top`
 
     #include "ffnonbonded.itp"
     #include "toluene_gmx.itp"
