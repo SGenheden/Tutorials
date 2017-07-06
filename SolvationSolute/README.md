@@ -6,6 +6,10 @@ The MD program we will use is **Gromacs version 5.1**.
 
 You will also need a range of in-house Python scripts that I have created and that you find in this Github repository: [Scripts](http://www.github.com/sgenheden/scripts). Download them to your local machine. I will be referring to this folder with `$SCRIPTS`.  
 
+
+The procedure is similar to the one used in the following publication:
+    [Estimation of Liposome Penetration Barriers of Drug Molecules with All-Atom and Coarse-Grained Models](http://dx.doi.org/10.1021/acs.jctc.6b00557)
+
 ## Solvate the toluene molecule
 
 We will assume that toluene already has been parametrized, so we will start directly by solvating the toluene in water and octanol using pre-equilibrated boxes.
@@ -106,7 +110,10 @@ We will start with a short minimization, e.g.
     gmx grompp -f em.mdp -c toluene_wat.gro -p toluene_wat.top -o toluene_wat_em.tpr
     gmx mdrun -deffnm toluene_wat_em
 
-For your own research project, you might want at this stage carry out some additional equilibration stage. For the purpose of this tutorial, we will skip this step.
+And then we will do a short 1 ns equilibration in the NPT ensemble. For your own research project, you might want at this stage carry out some additional equilibration stage. For the purpose of this tutorial, this short equilibration will do.
+
+    gmx grompp -f equil.mdp -c toluene_wat_em.gro -p toluene_wat.top -o toluene_wat_equil.tpr -maxwarn 1
+    gmx mdrun -deffnm toluene_wat_equil
 
 To setup the free energy simulation, we will use the provided `dg_template.mdp` file. It will perform a 6 ns simulation per lambda state.  However, as the names implies, it is only a template and we will have to finalize it.
 
@@ -131,7 +138,7 @@ To create the .tpr-files, use the following loop
     for X in {0..20}
     do
     sed -e "s/XXX/$X/" -e "s/MMM/tol/" dg_template.mdp > temp.mdp
-    gmx grompp -f temp.mdp -c toluene_wat_em.gro -p toluene_wat.top -o toluene_wat_dg${X}.tpr -maxwarn 2
+    gmx grompp -f temp.mdp -c toluene_wat_equil.gro -p toluene_wat.top -o toluene_wat_dg${X}.tpr -maxwarn 2
     done
 
 and then run the 21 free energy simulations on a cluster.
@@ -140,4 +147,4 @@ To calculate the free energy using BAR (Bennet acceptance ratio) use the followi
 
     gmx bar -f toluene_wat_dg{0..20}.xvg
 
-Remember that we compute the decoupling free energy, so the solvation free energy will be the negative of this. 
+Remember that we compute the decoupling free energy, so the solvation free energy will be the negative of this.

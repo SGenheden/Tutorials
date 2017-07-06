@@ -1,0 +1,42 @@
+integrator               = md
+tinit                    = 0
+dt                       = 0.002
+nsteps                   = 500000
+pbc	                     = xyz
+comm-mode                = linear
+nstcomm                  = 1
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxtcout                = 0
+nstvout                  = 0
+nstfout                  = 0
+nstenergy	             = 100
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = group
+coulombtype              = pme
+rcoulomb                 = 1.0
+rlist                    = 1.0
+rvdw                     = 1.0
+vdwtype                  = cutoff
+DispCorr                 = EnerPres
+table-extension          = 1
+fourierspacing           = 0.12
+nstlist		             = 10
+ns_type		             = grid
+
+; CONSTRAINTS
+constraints              = H-bonds
+constraint-algorithm     = Lincs
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS
+tcoupl                   = berendsen
+tc-grps                  = system
+tau-t                    = 1.0
+ref-t                    = 298
+Pcoupl                   = berendsen
+Pcoupltype               = isotropic
+ref-p                    = 1.013
+tau-p                    = 5.0
+compressibility          = 4.5e-5
