@@ -24,7 +24,7 @@ Here, I will assume that the hypericin molecule have been parametrized and that 
 
 For the all-atom simulations, hypericin, has been parametrized with the GAFF force field and AM1-BCC charges. These files can for instance be obtained with the [ACPYPE](http://webapps.ccpn.ac.uk/acpype/) tool that is available online.
 
-For the coarse-grained simulations, hypericin has been parametrized in manually in this paper. However, for reasonably small solutes, the CG parametrization can be carried out with the [auto_martini](https://github.com/tbereau/auto_martini) tool.
+For the coarse-grained simulations, hypericin has been parametrized in manually in this [paper](http://dx.doi.org/10.1021/ct400466m). However, for reasonably small solutes, the CG parametrization can be carried out with the [auto_martini](https://github.com/tbereau/auto_martini) tool.
 
 ![hypericin_cg](hyp2.png)*Coarse-grained model of hypericin. Bead types are shown next to the beads*
 
@@ -71,7 +71,7 @@ To minimize the membrane we need a topology and force field information for the 
 
 Now we need a system topology for the downloaded bilayer. Therefore,
 
-* Open new file and called it `membrane.top` and in that file add the following content
+* Open new file and call it `membrane.top` and in that file add the following content
 
 ```
 #include "slipids.ff/forcefield.itp"
@@ -128,7 +128,7 @@ Place both of the files in the `CG` folder.
 
 Now we need a system topology for the downloaded bilayer. Therefore,
 
-* Open new file and called it `membrane.top` and in that file add the following content
+* Open new file and call it `membrane.top` and in that file add the following content
 
 ```
 #include "martini_v2.2.itp"
@@ -200,7 +200,7 @@ Before we proceed to setup the actual MD simulation, we need to create the appro
 
 ### Prepare the all-atom topology files
 
-* Open new file and called it `system.top` and in that file add the following content
+* Open new file and call it `system.top` and in that file add the following content
 
 ```
 #include "slipids.ff/forcefield.itp"
@@ -245,7 +245,7 @@ These are standard GAFF atom types for the atoms in hypericin. In your own resea
 
 ### Prepare the coarse-grained topology files
 
-* Open new file and called it `system.top` and in that file add the following content
+* Open new file and call it `system.top` and in that file add the following content
 
 ```
 #include "martini_v2.2.itp"
@@ -328,7 +328,7 @@ Now we will create the run-file for Gromacs (.tpr-files).
 
 * Type `q` to quit the program and save the index file to `index.ndx`
 
-* Open `index.ndx` in text editor and manually copy the **solute** group in two new groups: One for each the two copies of hypericin. Name them `solute1` and `solute2. It can look something like this (for coarse-grained)
+* Open `index.ndx` in text editor and manually copy the **solute** group in two new groups: One for each the two copies of hypericin. Name them `solute1` and `solute2`. It can look something like this (for coarse-grained)
 
 ```
 [ solute ]
@@ -461,7 +461,7 @@ python $SCRIPTS/Membrane/calc_pmf.py -f colvar_z{0..30}.dat -c {0..30} -w 1000 -
 and it will put the PMF in a file `wham_pmf.dat` and report on essential free energy quantities. Since you have two copies of hypericin, it will reports the quantities for both of the solutes, but the PMF will be a combination of both solutes.
 
 ![pmf](tutorial_pmf.png)
-*How the PMF might look like* 
+*How the PMF might look like*
 
 The script will report on the minimum overlap between neighbouring histograms. For an application like this, the minimum overlap ought not be lower than 20%. You can also take a look at `wham_hist.png` to make sure that the histograms are alright.
 

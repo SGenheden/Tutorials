@@ -150,7 +150,7 @@ To minimize it we need a topology and force field information for the lipids. He
 
 Now we need a system topology for the downloaded bilayer. Therefore,
 
-* Open new file and called it `membrane.top` and in that file add the following content
+* Open new file and call it `membrane.top` and in that file add the following content
 
 ```
 #include "slipids.ff/forcefield.itp"

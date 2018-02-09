@@ -103,7 +103,7 @@ If more or less than 174 octanol molecules were added, change that number.
 
 ## Free energy simulations
 
-From this point on, the procedure is more or less identical for water and octanol. Therefore, I will only show the commands for octanol.
+From this point on, the procedure is more or less identical for water and octanol. Therefore, I will only show the commands for water.
 
 We will start with a short minimization, e.g.
 

@@ -12,4 +12,4 @@ These are the tutorials currently available:
 * EmbedProtBilayerGmx – embed and atomistic protein in an atomistic bilayer using Gromacs
 * ParamSolute – quick and easy parametrization of a series of small solutes
 * SolvationSolute – calculate the solvation free energy of toluene in water and octanol using Gromacs and all-atom potential
-* UmbrellaMemSolute – calculate the membrane PMF of the hypericin drug using Gromacs and both all-atom and coarse-grained potential 
+* UmbrellaMemSolute – calculate the membrane PMF of the hypericin drug using Gromacs and both all-atom and coarse-grained potential
