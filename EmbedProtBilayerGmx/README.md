@@ -368,6 +368,7 @@ To setup the simulation, type
 
 and then run the simulation, either on your local machine or on a cluster. The warning given by `gromppp` regarding the restraints can safely be ignored - if we follow the recommendation and get rid of the warning, the protein will not be embedded!
 
+> If you have a later version of Gromacs, you can obtain warnings like **Right hand side '30.0 30.0' for parameter 'tau-p' in parameter file is not a real value**. The syntax of this parameter has changed in later versions, just remove the second 30.0.
 
 ### Relaxing the membrane
 

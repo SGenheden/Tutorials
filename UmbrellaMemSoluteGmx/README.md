@@ -20,7 +20,10 @@ In this tutorial we will compute the PMF of a drug called *hypericin* in a *POPE
 
 ![hypericin](hyp1.png)*Molecular structure of hypericin*
 
-Here, I will assume that the hypericin molecule have been parametrized and that Gromacs topology/force field file (.itp) and structure (.gro) exists. They are provided with the tutorial.  
+Here, I will assume that the hypericin molecule have been parametrized and that Gromacs topology/force field file (.itp) and structure (.gro) exists.
+
+
+**They are provided with the tutorial in the `Aa` and `Cg` folders.  **
 
 For the all-atom simulations, hypericin, has been parametrized with the GAFF force field and AM1-BCC charges. These files can for instance be obtained with the [ACPYPE](http://webapps.ccpn.ac.uk/acpype/) tool that is available online.
 
@@ -116,6 +119,9 @@ and
 
 * `gmx mdrun -deffnm membrane_equil`
 
+
+> If you have a later version of Gromacs, you can obtain warnings like **Right hand side '10.0 10.0' for parameter 'tau-p' in parameter file is not a real value**. The syntax of this parameter has changed in later versions, just remove the second 10.0.
+
 ### Equilibrate the coarse-grained membrane
 
 To minimize the membrane we need a topology and force field information for the lipids and waters. The Martini force field can be downloaded from [here](http://cgmartini.nl/index.php/downloads).
@@ -161,6 +167,8 @@ To run a short (50 ns) equilibration, I have provided an .mdp-file
 and
 
 * `gmx mdrun -deffnm membrane_equil`
+
+> If you have a later version of Gromacs, you can obtain warnings like **Right hand side '10.0 10.0' for parameter 'tau-p' in parameter file is not a real value**. The syntax of this parameter has changed in later versions, just remove the second 10.0.
 
 ---
 
