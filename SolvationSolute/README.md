@@ -50,6 +50,8 @@ this scripts also prints out the atom type definitions. Copy them into a new fil
     ha             1    1.00800    0.000000  A      0.259964       0.06276
     hc             1    1.00800    0.000000  A      0.264953     0.0656888
 
+A Gromacs .itp-file, as explained in the Gromacs manual is case-sensitive but spaces does not matter.
+
 Next add the following atom types, after the toluene atom types
 
     OW           8      16.00    0.0000  A   3.15061e-01  6.36386e-01   
@@ -141,9 +143,15 @@ To create the .tpr-files, use the following loop
     gmx grompp -f temp.mdp -c toluene_wat_equil.gro -p toluene_wat.top -o toluene_wat_dg${X}.tpr -maxwarn 2
     done
 
-and then run the 21 free energy simulations on a cluster.
+and then run the 21 free energy simulations on a cluster, e.g.
 
-To calculate the free energy using BAR (Bennet acceptance ratio) use the following command
+    gmx mdrun -deffnm toluene_wat_dg0
+
+or all at the same time using the `-multi` flag
+
+    gmx mdrun -deffnm toluene_wat_dg0 -multi 21
+
+Finally, when all of the simulations have been run we can use this command to calculate the free energy using BAR (Bennet acceptance ratio):
 
     gmx bar -f toluene_wat_dg{0..20}.xvg
 
